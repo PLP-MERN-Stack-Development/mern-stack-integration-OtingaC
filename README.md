@@ -69,10 +69,10 @@ npm start
 
 ## Screenshots
 ### Homepage
-screenshots/homepage.png
+![Homepage](./mern-blog/screenshots/homepage.png)
 
 ### Post Creation
-screenshots/create-post.png
+![Post Creation](./mern-blog/screenshots/create-post.png)
 
 ### Authentication
-screenshots/login.png
+![Authentication](./mern-blog/screenshots/login.png)
