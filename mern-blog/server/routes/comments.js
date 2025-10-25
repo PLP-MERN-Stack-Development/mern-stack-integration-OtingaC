@@ -5,9 +5,7 @@ const Post = require('../models/Post');
 const { protect } = require('../middleware/auth');
 const { commentValidator } = require('../validators/commentValidator');
 
-// @route   GET /api/comments/post/:postId
-// @desc    Get all comments for a post
-// @access  Public
+// GET all comments for a post
 router.get('/post/:postId', async (req, res, next) => {
   try {
     const comments = await Comment.find({ post: req.params.postId })
@@ -20,9 +18,7 @@ router.get('/post/:postId', async (req, res, next) => {
   }
 });
 
-// @route   POST /api/comments
-// @desc    Create a new comment
-// @access  Private
+// POST - Create a new comment
 router.post('/', protect, async (req, res, next) => {
   try {
     // Validate input
@@ -54,9 +50,7 @@ router.post('/', protect, async (req, res, next) => {
   }
 });
 
-// @route   PUT /api/comments/:id
-// @desc    Update a comment
-// @access  Private
+// PUT - Update a comment
 router.put('/:id', protect, async (req, res, next) => {
   try {
     const comment = await Comment.findById(req.params.id);
@@ -83,9 +77,7 @@ router.put('/:id', protect, async (req, res, next) => {
   }
 });
 
-// @route   DELETE /api/comments/:id
-// @desc    Delete a comment
-// @access  Private
+// DELETE comment
 router.delete('/:id', protect, async (req, res, next) => {
   try {
     const comment = await Comment.findById(req.params.id);

@@ -4,9 +4,7 @@ const Category = require('../models/Category');
 const { protect } = require('../middleware/auth');
 const { categoryValidator } = require('../validators/postValidator');
 
-// @route   GET /api/categories
-// @desc    Get all categories
-// @access  Public
+// GET all categories
 router.get('/', async (req, res, next) => {
   try {
     const categories = await Category.find().sort({ name: 1 });
@@ -16,9 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// @route   GET /api/categories/:id
-// @desc    Get single category
-// @access  Public
+// Get single category
 router.get('/:id', async (req, res, next) => {
   try {
     const category = await Category.findById(req.params.id);
@@ -33,9 +29,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// @route   POST /api/categories
-// @desc    Create a new category
-// @access  Private
+// POST - Create new category
 router.post('/', protect, async (req, res, next) => {
   try {
     // Validate input
@@ -63,9 +57,7 @@ router.post('/', protect, async (req, res, next) => {
   }
 });
 
-// @route   PUT /api/categories/:id
-// @desc    Update a category
-// @access  Private
+// PUT - Update a category
 router.put('/:id', protect, async (req, res, next) => {
   try {
     const category = await Category.findById(req.params.id);
@@ -91,9 +83,7 @@ router.put('/:id', protect, async (req, res, next) => {
   }
 });
 
-// @route   DELETE /api/categories/:id
-// @desc    Delete a category
-// @access  Private
+// DELETE a category
 router.delete('/:id', protect, async (req, res, next) => {
   try {
     const category = await Category.findById(req.params.id);

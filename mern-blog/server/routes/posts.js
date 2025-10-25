@@ -7,9 +7,7 @@ const { postValidator } = require('../validators/postValidator');
 const fs = require('fs');
 const path = require('path');
 
-// @route   GET /api/posts
-// @desc    Get all posts with pagination, search, and filter
-// @access  Public
+// GET all posts with pagination, search, and filter
 router.get('/', async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -54,9 +52,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// @route   GET /api/posts/:id
-// @desc    Get single post by ID
-// @access  Public
+// GET post by ID
 router.get('/:id', async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id)
@@ -73,9 +69,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// @route   POST /api/posts
-// @desc    Create a new post
-// @access  Private
+// POST - Create a new post
 router.post('/', protect, upload.single('image'), async (req, res, next) => {
   try {
     // Validate input
@@ -113,9 +107,7 @@ router.post('/', protect, upload.single('image'), async (req, res, next) => {
   }
 });
 
-// @route   PUT /api/posts/:id
-// @desc    Update a post
-// @access  Private
+// PUT - Update a post
 router.put('/:id', protect, upload.single('image'), async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -175,9 +167,7 @@ router.put('/:id', protect, upload.single('image'), async (req, res, next) => {
   }
 });
 
-// @route   DELETE /api/posts/:id
-// @desc    Delete a post
-// @access  Private
+// DELETE post
 router.delete('/:id', protect, async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id);
